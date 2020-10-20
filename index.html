@@ -75,7 +75,7 @@
     z-index: 2;
     mix-blend-mode: difference;
     pointer-events: none;
-    fill: pink;
+    fill: rgb(176, 224,230);
   }  
 
   .css-lost790 .section {
@@ -118,14 +118,14 @@
 
   .css-lost790 .scroll-image {
     position: absolute;
-    left: 25%;
-    height: 1200px;
+    left: 50%;
+    height: 2200px;
   }
 
   .css-lost790 .scroll-image section{
-    height: 200px;
+    height: 500px;
     width: 500px;
-    background-position: center bottom;
+    background-position: 80% bottom;
     background-attachment: fixed;
     background-repeat: no-repeat;
   }
@@ -159,6 +159,22 @@
     background-color:  rgb(42, 44, 43);
     background-image: url("img/to-5.png");
   }
+
+  #a7 {
+    background-color:  rgb(42, 44, 43);
+    background-image: url("img/to-6.png");
+  }
+
+  #a8 {
+    background-color:  rgb(42, 44, 43);
+    background-image: url("img/to-7.png");
+  }
+
+  #a9 {
+    background-color:  rgb(42, 44, 43);
+    background-image: url("img/to-8.png");
+  }
+
 </style>
 
 <html>
@@ -172,15 +188,18 @@
               <textPath style="transform:translate3d(0,0,0);" alignment-baseline="top" xlink:href="#curve" startOffset="1200px" id="text-path"> &copy;青草怪味豆</textPath>
           </text>
         </svg>
-        <div class="scroll-image" style="top: 1800px">
+        <div class="scroll-image" style="top: 2500px">
           <section id="a1"></section>
           <section id="a2"></section>
           <section id="a3"></section>
           <section id="a4"></section>
           <section id="a5"></section>
           <section id="a6"></section>
+          <section id="a7"></section>
+          <section id="a8"></section>
+          <section id="a9"></section>
         </div>
-        <!-- <div class="section" style="top: 7225px">
+        <div class="section" style="top: 7225px">
           <span>Front-end Developer</span>
           <span>Open Source Contributor</span>
           <span>Blogger</span>
@@ -198,21 +217,21 @@
           <p>I've been with my lovely girlfriend for three years, and we have a good relationship.</p>
           <p>I like games in background of space, wasteland, 50s or 60s. The Fallout series is my favorite.</p>
         </div>
-        <div class="apple-like" style="top: 14300px;">哈哈1</div> -->
+        <div class="apple-like" style="top: 14300px;">哈哈1</div>
         <!-- <p class="hint">向下滑动</p> -->
       </div>
     </div>
-    <div style="position: fixed; top: 0px; left: 0px; border-radius: 100%; pointer-events: none; opacity: 1; height: 40px; width: 40px; background: rgb(221, 221, 221); border: 0px solid transparent; mix-blend-mode: exclusion; transition: background 0.266667s ease 0s, border 0.266667s ease 0s; will-change: transform; transform: translate3d(257px, -16px, 0px);"></div>
+    <!-- <div style="position: fixed; top: 0px; left: 0px; border-radius: 100%; pointer-events: none; opacity: 1; height: 40px; width: 40px; background: rgb(221, 221, 221); border: 0px solid transparent; mix-blend-mode: exclusion; transition: background 0.266667s ease 0s, border 0.266667s ease 0s; will-change: transform; transform: translate3d(257px, -16px, 0px);"></div> -->
   </body>
 </html>
 
 <script>
   // 监听页面的滚动事件
   const textPath = document.querySelector("#text-path");
-  // const text = document.querySelector(".apple-like");
+  const text = document.querySelector(".apple-like");
   const title = document.querySelector(".title");
-  // const section = document.querySelector(".section");
-  // const content = document.querySelector(".content");
+  const section = document.querySelector(".section");
+  const content = document.querySelector(".content");
   const animation = document.querySelector(".scroll-image");
 
 const h = document.documentElement, 
@@ -236,13 +255,13 @@ document.addEventListener("scroll", e => {
     title.style.display = 'block';
   }
   console.log(b[st])
-  // section.style.top = (7225-b[st]) +'px';
-  // content.style.top = (7250-b[st]) +'px';
-  animation.style.top = (1800-b[st]) +'px';
-  // if(b[st] < 14050) {
-  //   text.style.top = (14300-b[st]) +'px';
-  // }
-  // text.innerHTML = displayTexts[parseInt(percent/10)] ?? 'Thanks for watching';
-  // console.log(parseInt(percent/10));
+  section.style.top = (7225-b[st]) +'px';
+  content.style.top = (7250-b[st]) +'px';
+  
+  animation.style.top = (2500-b[st]) +'px';
+  if(b[st] < 14050) {
+    text.style.top = (14300-b[st]) +'px';
+  }
+  text.innerHTML = displayTexts[parseInt(percent/10)] ?? 'Thanks for watching';
 });
 </script>
