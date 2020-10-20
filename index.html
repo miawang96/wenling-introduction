@@ -115,6 +115,50 @@
     left: 50%;
     transform: translate3d(-50%, -43.5%, 0px);
   }
+
+  .css-lost790 .scroll-image {
+    position: absolute;
+    left: 25%;
+    height: 1200px;
+  }
+
+  .css-lost790 .scroll-image section{
+    height: 200px;
+    width: 500px;
+    background-position: center bottom;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+
+  #a1 {
+    background-color: rgb(42, 44, 43);
+    background-image: url("img/to-0.png");
+  }
+
+  #a2 {
+    background-color:  rgb(42, 44, 43);
+    background-image: url("img/to-1.png");
+  }
+
+  #a3 {
+    background-color:  rgb(42, 44, 43);
+    background-image: url("img/to-2.png");
+  }
+
+  #a4 {
+    background-color:  rgb(42, 44, 43);
+    background-image: url("img/to-3.png");
+  }
+
+  #a5 {
+    background-color: rgb(42, 44, 43);
+    background-image: url("img/to-4.png");
+  }
+
+  #a6 {
+    background-color:  rgb(42, 44, 43);
+    background-image: url("img/to-5.png");
+  }
 </style>
 
 <html>
@@ -128,7 +172,15 @@
               <textPath style="transform:translate3d(0,0,0);" alignment-baseline="top" xlink:href="#curve" startOffset="1200px" id="text-path"> &copy;青草怪味豆</textPath>
           </text>
         </svg>
-        <div class="section" style="top: 6925px">
+        <div class="scroll-image" style="top: 1800px">
+          <section id="a1"></section>
+          <section id="a2"></section>
+          <section id="a3"></section>
+          <section id="a4"></section>
+          <section id="a5"></section>
+          <section id="a6"></section>
+        </div>
+        <!-- <div class="section" style="top: 7225px">
           <span>Front-end Developer</span>
           <span>Open Source Contributor</span>
           <span>Blogger</span>
@@ -137,7 +189,7 @@
           <span>Boyfriend</span>
           <span>Gamer</span>
         </div>
-        <div class="content" style="top: 6950px;">
+        <div class="content" style="top: 7250px;">
           <p>With HTML CSS JS and most important, love, I make smooth and stable user interaction living.</p>
           <p>I enjoy open source and front-end componentization, and with my time.</p>
           <p>I started in 2016 and use it to record my thoughts and life.</p>
@@ -146,7 +198,7 @@
           <p>I've been with my lovely girlfriend for three years, and we have a good relationship.</p>
           <p>I like games in background of space, wasteland, 50s or 60s. The Fallout series is my favorite.</p>
         </div>
-        <div class="apple-like" style="top: 14000px;">哈哈1</div>
+        <div class="apple-like" style="top: 14300px;">哈哈1</div> -->
         <!-- <p class="hint">向下滑动</p> -->
       </div>
     </div>
@@ -157,10 +209,11 @@
 <script>
   // 监听页面的滚动事件
   const textPath = document.querySelector("#text-path");
-  const text = document.querySelector(".apple-like");
+  // const text = document.querySelector(".apple-like");
   const title = document.querySelector(".title");
-  const section = document.querySelector(".section");
-  const content = document.querySelector(".content");
+  // const section = document.querySelector(".section");
+  // const content = document.querySelector(".content");
+  const animation = document.querySelector(".scroll-image");
 
 const h = document.documentElement, 
       b = document.body,
@@ -182,12 +235,14 @@ document.addEventListener("scroll", e => {
   } else {
     title.style.display = 'block';
   }
-  section.style.top = (6925-b[st]) +'px';
-  content.style.top = (6950-b[st]) +'px';
-  if(b[st] < 13750) {
-    text.style.top = (14000-b[st]) +'px';
-  }
-  text.innerHTML = displayTexts[parseInt(percent/10)] ?? 'Thanks for watching';
-  console.log(parseInt(percent/10));
+  console.log(b[st])
+  // section.style.top = (7225-b[st]) +'px';
+  // content.style.top = (7250-b[st]) +'px';
+  animation.style.top = (1800-b[st]) +'px';
+  // if(b[st] < 14050) {
+  //   text.style.top = (14300-b[st]) +'px';
+  // }
+  // text.innerHTML = displayTexts[parseInt(percent/10)] ?? 'Thanks for watching';
+  // console.log(parseInt(percent/10));
 });
 </script>
