@@ -53,7 +53,6 @@
     top: 50%;
     left: 50%;
     transform: translate3d(-50%, -43.5%, 0px);
-    z-index: 3;
   }
 
   .title {
@@ -78,6 +77,44 @@
     pointer-events: none;
     fill: pink;
   }  
+
+  .css-lost790 .section {
+    position: absolute;
+    left: 5%;
+    width: 90%;
+    height: 6000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    -webkit-box-pack: justify;
+  }
+
+  .css-lost790 .section span {
+    color: rgb(229, 194, 200);
+    display: inline-block;
+    height: 50px;
+    line-height: .9;
+    font-size: 50px;
+    max-width: 1300px;
+    font-variation-settings: "MONO" 0, "CASL" 1, "slnt" -20;
+  }
+
+  .css-lost790 .content {
+    position: absolute;
+    left: 55%;
+    width: 40%;
+    height: 5700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    -webkit-box-pack: justify;
+  }
+
+  .css-lost790 .apple-like {
+    position: absolute;
+    left: 50%;
+    transform: translate3d(-50%, -43.5%, 0px);
+  }
 </style>
 
 <html>
@@ -91,7 +128,7 @@
               <textPath style="transform:translate3d(0,0,0);" alignment-baseline="top" xlink:href="#curve" startOffset="1200px" id="text-path"> &copy;青草怪味豆</textPath>
           </text>
         </svg>
-        <!-- <div class="title">
+        <div class="section" style="top: 6925px">
           <span>Front-end Developer</span>
           <span>Open Source Contributor</span>
           <span>Blogger</span>
@@ -99,12 +136,21 @@
           <span>Coder</span>
           <span>Boyfriend</span>
           <span>Gamer</span>
-        </div> -->
-        <!-- <section><div class="apple-like">哈哈1</div></section> -->
+        </div>
+        <div class="content" style="top: 6950px;">
+          <p>With HTML CSS JS and most important, love, I make smooth and stable user interaction living.</p>
+          <p>I enjoy open source and front-end componentization, and with my time.</p>
+          <p>I started in 2016 and use it to record my thoughts and life.</p>
+          <p>My girlfriend and I produced a Chinese to record young people's thinking in the concrete jungle.</p>
+          <p>I started learning programming from junior high school, coding is one of my daily problem solving methods.</p>
+          <p>I've been with my lovely girlfriend for three years, and we have a good relationship.</p>
+          <p>I like games in background of space, wasteland, 50s or 60s. The Fallout series is my favorite.</p>
+        </div>
+        <div class="apple-like" style="top: 14000px;">哈哈1</div>
         <!-- <p class="hint">向下滑动</p> -->
       </div>
     </div>
-    <!-- <div style="position: fixed; top: 0px; left: 0px; border-radius: 100%; pointer-events: none; opacity: 1; height: 40px; width: 40px; background: rgb(221, 221, 221); border: 0px solid transparent; mix-blend-mode: exclusion; transition: background 0.266667s ease 0s, border 0.266667s ease 0s; will-change: transform; transform: translate3d(257px, -16px, 0px);"></div> -->
+    <div style="position: fixed; top: 0px; left: 0px; border-radius: 100%; pointer-events: none; opacity: 1; height: 40px; width: 40px; background: rgb(221, 221, 221); border: 0px solid transparent; mix-blend-mode: exclusion; transition: background 0.266667s ease 0s, border 0.266667s ease 0s; will-change: transform; transform: translate3d(257px, -16px, 0px);"></div>
   </body>
 </html>
 
@@ -113,6 +159,8 @@
   const textPath = document.querySelector("#text-path");
   const text = document.querySelector(".apple-like");
   const title = document.querySelector(".title");
+  const section = document.querySelector(".section");
+  const content = document.querySelector(".content");
 
 const h = document.documentElement, 
       b = document.body,
@@ -128,14 +176,18 @@ const displayTexts = {
 document.addEventListener("scroll", e => { 
   let percent = (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
   textPath.setAttribute("startOffset", (-percent * 40) + 1200)
-  // text.innerHTML = displayTexts[parseInt(percent/10)] ?? 'Thanks for watching';
-  // console.log(percent);
-  console.log(title.style);
   title.style.fontSize = percent + 'vw';
   if(percent > 9.10677) {
     title.style.display = 'none';
   } else {
     title.style.display = 'block';
   }
+  section.style.top = (6925-b[st]) +'px';
+  content.style.top = (6950-b[st]) +'px';
+  if(b[st] < 13750) {
+    text.style.top = (14000-b[st]) +'px';
+  }
+  text.innerHTML = displayTexts[parseInt(percent/10)] ?? 'Thanks for watching';
+  console.log(parseInt(percent/10));
 });
 </script>
