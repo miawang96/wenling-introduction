@@ -262,12 +262,11 @@ document.addEventListener("scroll", e => {
   document.documentElement.style.setProperty('--casl', "'CASL' " + (0.9/1800)*b[st]);
   document.documentElement.style.setProperty('--wght', "'wght' " + (300+(800/1800)*b[st]));
   document.documentElement.style.setProperty('--slnt', "'slnt' " + (0-(19/1800)*b[st]));
-  console.log(b[st])
+  // console.log(b[st])
   section.style.top = (sectionInitialTop-b[st]) +'px';
   content.style.top = (contentInitialTop-b[st]) +'px';
    
   animation.style.top = (animationInitialTop-b[st]) +'px';
-  animatedContent.style.top = (animationInitialTop-b[st]) +'px';
   if(b[st] < 14050) {
     text.style.top = (textInitialTop-b[st]) +'px';
   }
