@@ -10,6 +10,15 @@
     box-sizing: border-box;
   }
 
+  :root {
+    --mono: 'MONO' 0;
+    --casl: 'CASL' 0;
+    --wght: 'wght' 300;
+    --slnt: 'slnt' 0;
+    --theme-color:  rgb(176, 224,230);
+    --background-color: rgb(42, 44, 43);
+  }
+
   html {
     font-family: "Recursive",-apple-system,BlinkMacSystemFont,PingFang SC,Helvetica Neue,STHeiti,Microsoft Yahei,Tahoma,Simsun,sans-serif;
     font-weight: 400;
@@ -43,7 +52,7 @@
     width: 100%;
     height: 100%;
     color: rgb(219, 221, 223);
-    background: rgb(42, 44, 43);
+    background: var(--background-color);
     transition: background 0.3s ease 0s;
   }
 
@@ -53,15 +62,7 @@
     top: 50%;
     left: 50%;
     transform: translate3d(-50%, -43.5%, 0px);
-  }
-
-  .title {
-    --mono: 'MONO' 0;
-    --casl: 'CASL' 0;
-    --wght: 'wght' 200;
-    --slnt: 'slnt' 0;
-    --CRSV: 'CRSV' 0.5;
-    font-variation-settings: var(--mono), var(--casl), var(--wght), var(--slnt), var(--CRSV), 'ital' 0;
+    font-variation-settings: var(--mono), var(--casl), var(--wght), var(--slnt), 'ital' 0;
   }
 
   .css-lost790 svg {
@@ -75,7 +76,7 @@
     z-index: 2;
     mix-blend-mode: difference;
     pointer-events: none;
-    fill: rgb(176, 224,230);
+    fill: var(--theme-color);
   }  
 
   .css-lost790 .section {
@@ -90,7 +91,7 @@
   }
 
   .css-lost790 .section span {
-    color: rgb(229, 194, 200);
+    color: var(--theme-color);
     display: inline-block;
     height: 50px;
     line-height: .9;
@@ -122,56 +123,53 @@
     height: 2200px;
   }
 
+  .css-lost790 .scroll-image span{
+    position: absolute;
+    bottom: 10px;
+  }
+
   .css-lost790 .scroll-image section{
     height: 500px;
     width: 500px;
     background-position: 80% bottom;
     background-attachment: fixed;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat;  
+    background-color: var(--background-color);
   }
 
   #a1 {
-    background-color: rgb(42, 44, 43);
     background-image: url("img/to-0.png");
   }
 
   #a2 {
-    background-color:  rgb(42, 44, 43);
     background-image: url("img/to-1.png");
   }
 
   #a3 {
-    background-color:  rgb(42, 44, 43);
     background-image: url("img/to-2.png");
   }
 
   #a4 {
-    background-color:  rgb(42, 44, 43);
     background-image: url("img/to-3.png");
   }
 
   #a5 {
-    background-color: rgb(42, 44, 43);
     background-image: url("img/to-4.png");
   }
 
   #a6 {
-    background-color:  rgb(42, 44, 43);
     background-image: url("img/to-5.png");
   }
 
   #a7 {
-    background-color:  rgb(42, 44, 43);
     background-image: url("img/to-6.png");
   }
 
   #a8 {
-    background-color:  rgb(42, 44, 43);
     background-image: url("img/to-7.png");
   }
 
   #a9 {
-    background-color:  rgb(42, 44, 43);
     background-image: url("img/to-8.png");
   }
 
@@ -181,7 +179,7 @@
   <body>
     <div id="app">
       <div class="css-lost790">
-        <h1 class="title" style="font-size: 2vw; will-change: auto;">WEN LING</h1>
+        <h1 class="title" style="font-size: 20px; will-change: auto;">Welcome to WenLing!</h1>
         <svg viewBox="20 20 800 64" style="will-change: content;">
           <path id="curve" fill="transparent" d="M0.17,0.23c0,0,105.85,77.7,276.46,73.2s243.8-61.37,408.77-54.05c172.09,7.64,213.4,92.34,413.28,64.19"></path>
           <text width="100%" style="transform:translate3d(0,0,0);">
@@ -189,6 +187,7 @@
           </text>
         </svg>
         <div class="scroll-image" style="top: 2500px">
+          <span> test </span>
           <section id="a1"></section>
           <section id="a2"></section>
           <section id="a3"></section>
@@ -237,7 +236,14 @@
 const h = document.documentElement, 
       b = document.body,
       st = 'scrollTop',
-      sh = 'scrollHeight';
+      sh = 'scrollHeight',
+      displayTitlePercent = 9.10677,
+      sectionInitialTop = 7225,
+      contentInitialTop = 7250,
+      animationInitialTop = 2500,
+      textInitialTop = 14350;
+
+
 
 const displayTexts = {
   7: "哈哈1",
@@ -248,19 +254,21 @@ const displayTexts = {
 document.addEventListener("scroll", e => { 
   let percent = (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
   textPath.setAttribute("startOffset", (-percent * 40) + 1200)
-  title.style.fontSize = percent + 'vw';
-  if(percent > 9.10677) {
-    title.style.display = 'none';
-  } else {
-    title.style.display = 'block';
-  }
+
+  title.style.fontSize = 20+(35/1800)*b[st] + 'px';
+  title.style.display = percent > displayTitlePercent ? 'none' : 'block';
+
+  document.documentElement.style.setProperty('--mono', "'MONO' " + (0.4/1800)*b[st]);
+  document.documentElement.style.setProperty('--casl', "'CASL' " + (0.9/1800)*b[st]);
+  document.documentElement.style.setProperty('--wght', "'wght' " + (300+(800/1800)*b[st]));
+  document.documentElement.style.setProperty('--slnt', "'slnt' " + (0-(19/1800)*b[st]));
   console.log(b[st])
-  section.style.top = (7225-b[st]) +'px';
-  content.style.top = (7250-b[st]) +'px';
-  
-  animation.style.top = (2500-b[st]) +'px';
+  section.style.top = (sectionInitialTop-b[st]) +'px';
+  content.style.top = (contentInitialTop-b[st]) +'px';
+   
+  animation.style.top = (animationInitialTop-b[st]) +'px';
   if(b[st] < 14050) {
-    text.style.top = (14300-b[st]) +'px';
+    text.style.top = (textInitialTop-b[st]) +'px';
   }
   text.innerHTML = displayTexts[parseInt(percent/10)] ?? 'Thanks for watching';
 });
